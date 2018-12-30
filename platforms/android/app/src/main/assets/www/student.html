@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+
+    <meta name="theme-color" content="#21f3e7" />
+
+    <meta name="format-detection" content="telephone=no"/>
+
+    <meta name="msapplication-tap-highlight" content="no"/>
+
+    <title></title>
+
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="assets/fonts/md-fonts/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <!-- animate css -->
+    <link rel="stylesheet" href="assets/libs/animate.css/animate.min.css" />
+
+    <!-- jquery-loading -->
+    <link rel="stylesheet" href="assets/libs/jquery-loading/dist/jquery.loading.min.css" />
+    <!-- octadmin main style -->
+    <link id="pageStyle" rel="stylesheet" href="assets/css/style-red.css" />
+    <link rel="stylesheet" href="framework7/css/framework7.css" >
+    <script src="framework7/js/framework7.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body onload="init()">
+    <section class="container-fluid">
+            <div class="animated fadeIn">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card card-accent-theme">
+                                <div class="card-body">
+                                    <h4 class="text-theme" style="text-align: center">Announcements</h4>
+                                    <div id="accordion" role="tablist">
+                                        <div class="card border-danger">
+                                            <div class="card-header" role="tab" id="headingOne">
+                                                <h6 class="mb-0">
+                                                    <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color: #0016da">
+                                                        <i class="fa fa-ioxhost" style="color: red"></i> Lost & Found Announcements
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                <div class="card-body card-outline-top">
+                                                    <div id="lostFound"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card border-danger">
+                                            <div class="card-header" role="tab" id="headingTwo">
+                                                <h6 class="mb-0">
+                                                    <a data-toggle="collapse" href="#collapseTwo" aria-controls="collapseTwo" style="color: #0016da">
+                                                        <i class="fa fa-bullhorn" style="color: red"></i> Special Announcements
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                <!--<div class="card-body">-->
+                                                <!--</div>-->
+                                                <div class="card-body card-outline-top">
+                                                    <div id="specialAnn"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card border-danger">
+                                            <div class="card-header" role="tab" id="headingFour">
+                                                <h6 class="mb-0">
+                                                    <a data-toggle="collapse" href="#collapseFour" aria-controls="collapseFour" style="color: #0016da">
+                                                        <i class="fa fa-book" style="color: red"></i> Scholarship Announcements
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                <div class="card-body card-outline-top">
+                                                    <div id="scholarshipContent"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card border-danger">
+                                            <div class="card-header" role="tab" id="headingFive">
+                                                <h6 class="mb-0">
+                                                    <a data-toggle="collapse" href="#collapseFive" aria-controls="collapseFive" style="color: #0016da">
+                                                        <i class="fa fa-soccer-ball-o" style="color: red"></i>  Sports Announcements
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                <div class="card-body card-outline-top">
+                                                    <div id="sportsContent"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card border-danger">
+                                            <div class="card-header" role="tab" id="headingSix">
+                                                <h6 class="mb-0">
+                                                    <a data-toggle="collapse" href="#collapseSix" aria-controls="collapseSix" style="color: #0016da">
+                                                        <i class="fa fa-pencil" style="color: red"></i> Room & Examination Schedule Announcements
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div id="examAll"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card border-danger">
+                                            <div class="card-header" role="tab" id="headingSeven">
+                                                <h6 class="mb-0">
+                                                    <a data-toggle="collapse" href="#collapseSeven" aria-controls="collapseSeven" style="color: #0016da">
+                                                        <i class="fa fa-pencil" style="color: red"></i> Video Announcement
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseSeven" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div id="video"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end-card-body -->
+                            </div>
+
+
+                            <!-- end card -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <button class="btn btn-danger btn-block" id="goHome"><i class="mdi mdi-home"></i></button>
+                        </div>
+                    </div>
+                </div>
+                    <!-- end row -->
+
+                </div>
+                <!-- end animated fadeIn -->
+        <!-- end card -->
+    </section>
+
+    <div id="copyright"><a href="#">&copy; </div>
+
+    <!-- Bootstrap and necessary plugins -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap and necessary plugins -->
+    <script src="cordova.js"></script>
+    <!-- Bootstrap and necessary plugins -->
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/libs/PACE/pace.min.js"></script>
+    <script src="assets/libs/chart.js/dist/Chart.min.js"></script>
+    <script src="assets/libs/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+    <!-- jquery-loading -->
+    <script src="assets/libs/jquery-loading/dist/jquery.loading.min.js"></script>
+    <script src="js/students.js"></script>
+    <script>
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('b7a01f95de7dcfc94bfd', {
+            cluster: 'ap1',
+            forceTLS: true
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+            if(data.role == 'Student'){
+                console.log("For Admin and Staff");
+                console.log(data);
+                cordova.plugins.notification.local.schedule({
+                    title: data.title,
+                    text: data.message,
+                    foreground: true
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

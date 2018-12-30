@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <meta charset="utf-8" />
+    <!-- Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+          * Enable inline JS: add 'unsafe-inline' to default-src -->
+
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+
+    <meta name="theme-color" content="#21f3e7" />
+
+    <meta name="format-detection" content="telephone=no"/>
+
+    <meta name="msapplication-tap-highlight" content="no"/>
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="assets/fonts/md-fonts/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <!-- animate css -->
+    <link rel="stylesheet" href="assets/libs/animate.css/animate.min.css" />
+
+    <!-- jquery-loading -->
+    <link rel="stylesheet" href="assets/libs/jquery-loading/dist/jquery.loading.min.css" />
+    <!-- octadmin main style -->
+    <link id="pageStyle" rel="stylesheet" href="assets/css/style-red.css" />
+    <link rel="stylesheet" href="framework7/css/framework7.css" >
+    <script src="framework7/js/framework7.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+
+<body onload="init()">
+<section class="container-pages">
+
+
+    <div class="card pages-card col-lg-4 col-md-6 col-sm-6">
+        <div class="card-body ">
+            <div class="h4 text-center text-theme"><strong>Digital Bulletin Board</strong></div>
+            <div class="small text-center text-dark"> Register New Employee </div>
+
+            <form id="formFaculties">
+                <div class="form-group">
+                    <label>ID Number</label>
+                    <input type="text" class="form-control" name="employeeid" onkeypress="validate(event)" pattern="\d*" maxlength="5" minlength="5" required oninvalid="this.setCustomValidity('ID Number must be equal to 5 and contains number only')" oninput="this.setCustomValidity('')" />
+                </div>
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" name="firstname" required />
+                </div>
+                <div class="form-group">
+                    <label>Middle Name</label>
+                    <input type="text" class="form-control" name="middlename" />
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" name="lastname" required />
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <select name="role" class="form-control" required>
+                        <option value="Dean">College Dean Coordinator</option>
+                        <option value="Scholar">Scholarship and Financial Assistance Coordinator</option>
+                        <option value="Sports">Sports Coordinator</option>
+                        <option value="Faculty">Faculty</option>
+                    </select>
+                </div>
+                <input type="hidden" name="registerSubmit" />
+                <div class="form-group form-actions">
+                    <button type="submit" class="btn btn-theme login-btn" name="login">Register</button>
+                </div>
+            </form>
+            <div class="text-center">
+                <small>Already have an account? Please
+                    <a href="" class="text-theme" onclick="window.open('login.html')">Login</a>
+                </small>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button class="btn btn-danger btn-block" onclick="window.open('index.html', '_self')"><i class="mdi mdi-home"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end card-body -->
+    </div>
+    <!-- end card -->
+</section>
+<!-- end section container -->
+<div class="half-circle"></div>
+<div class="small-circle"></div>
+<!-- end mybutton -->
+
+<div id="copyright"><a href="#">&copy; </a></div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- Bootstrap and necessary plugins -->
+<script src="cordova.js"></script>
+<script href="assets/libs/jquery/dist/jquery.min.js"></script>
+<script href="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script href="assets/libs/bootstrap/bootstrap.min.js"></script>
+<script href="assets/libs/PACE/pace.min.js"></script>
+<script href="assets/libs/chart.js/dist/Chart.min.js"></script>
+<script href="assets/libs/nicescroll/jquery.nicescroll.min.js"></script>
+
+<script href="assets/libs/jquery-knob/dist/jquery.knob.min.js"></script>
+
+<!-- jquery-loading -->
+<script href="assets/libs/jquery-loading/dist/jquery.loading.min.js"></script>
+<!-- octadmin Main Script -->
+<script href="assets/js/app.js"></script>
+
+<!-- bootstrap form validation -->
+<script src="js/auth.js"></script>
+
+
+</body>
+
+</html>

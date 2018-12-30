@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+
+    <meta name="theme-color" content="#21f3e7" />
+
+    <meta name="format-detection" content="telephone=no"/>
+
+    <meta name="msapplication-tap-highlight" content="no"/>
+
+    <title></title>
+
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="assets/fonts/md-fonts/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <!-- animate css -->
+    <link rel="stylesheet" href="assets/libs/animate.css/animate.min.css" />
+
+     <!-- jquery-loading -->
+     <link rel="stylesheet" href="assets/libs/jquery-loading/dist/jquery.loading.min.css" />
+    <!-- octadmin main style -->
+    <link id="pageStyle" rel="stylesheet" href="assets/css/style-red.css" />
+    <link rel="stylesheet" href="framework7/css/framework7.css" >
+    <script src="framework7/js/framework7.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+<body onload="init()">
+    <section class="container-pages">
+
+
+        <div class="card pages-card col-lg-4 col-md-6 col-sm-6">
+            <div class="card-body ">
+                <div class="h4 text-center text-theme"><strong>Digital Bulletin Board</strong></div>
+                <div class="small text-center text-dark"> Login to Account </div>
+               
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <div class="input-group">
+                                 <span class="input-group-addon text-theme"><i class="fa fa-user"></i> 
+                                </span>
+                                <input type="text" id="username" name="username" class="form-control"
+                                       placeholder="Username" required />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon text-theme"><i class="fa fa-asterisk"></i></span>
+                                <input type="password" id="password" name="password" class="form-control"
+                                       placeholder="Password" autocomplete="new-password" required />
+                            </div>
+                        </div>
+                        <input type="hidden" name="login" id="login">
+                        <div class="form-group form-actions">
+                            <button type="submit" class="btn btn-theme login-btn" name="login">Login</button>
+                        </div>
+                    </form>
+                <div class="text-center">
+                    <small>Don't you have an account ? Please
+                        <a href="signup.html" class="text-theme" id="signup">Sign up</a>
+                    </small>
+                </div>
+              
+            </div>
+            <!-- end card-body -->
+        </div>
+        <!-- end card -->
+    </section>
+    <!-- end section container -->
+    <div class="half-circle"></div>
+    <div class="small-circle"></div>
+         <!-- end mybutton -->
+
+    <div id="copyright"><a href="#">&copy; </a></div>
+   
+         <!-- Bootstrap and necessary plugins -->
+    <script src="cordova.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <!--<script href="assets/libs/jquery/dist/jquery.min.js"></script>-->
+    <script href="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script href="assets/libs/bootstrap/bootstrap.min.js"></script>
+    <script href="assets/libs/PACE/pace.min.js"></script>
+    <script href="assets/libs/chart.js/dist/Chart.min.js"></script>
+    <script href="assets/libs/nicescroll/jquery.nicescroll.min.js"></script>
+
+    <script href="assets/libs/jquery-knob/dist/jquery.knob.min.js"></script>
+
+        
+    <!-- jquery-loading -->
+    <script href="assets/libs/jquery-loading/dist/jquery.loading.min.js"></script>
+    <!-- octadmin Main Script -->
+    <script href="assets/js/app.js"></script>
+    <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+    <!-- bootstrap form validation -->
+    <script src="assets/js/bootstrap-form-validation.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('b7a01f95de7dcfc94bfd', {
+            cluster: 'ap1',
+            forceTLS: true
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+            if(data.role == 'Student'){
+                console.log("For Admin and Staff");
+                console.log(data);
+                cordova.plugins.notification.local.schedule({
+                    title: data.title,
+                    text: data.message,
+                    foreground: true
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

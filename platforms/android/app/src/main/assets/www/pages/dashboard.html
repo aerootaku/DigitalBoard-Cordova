@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <!-- Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+          * Enable inline JS: add 'unsafe-inline' to default-src -->
+
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+
+    <meta name="theme-color" content="#21f3e7" />
+
+    <meta name="format-detection" content="telephone=no"/>
+
+    <meta name="msapplication-tap-highlight" content="no"/>
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="../assets/fonts/md-fonts/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="../assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <!-- animate css -->
+    <link rel="stylesheet" href="../assets/libs/animate.css/animate.min.css" />
+
+    <!-- jquery-loading -->
+    <link rel="stylesheet" href="../assets/libs/jquery-loading/dist/jquery.loading.min.css" />
+    <!-- octadmin main style -->
+    <link id="pageStyle" rel="stylesheet" href="../assets/css/style-red.css" />
+    <link rel="stylesheet" href="../framework7/css/framework7.css" >
+    <script src="../framework7/js/framework7.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <style>
+        .limit{
+            width:100%;
+            overflow-x: scroll;
+            font-size: 14px;
+        }
+    </style>
+
+</head>
+
+<body class="app sidebar-fixed aside-menu-off-canvas aside-menu-hidden header-fixed" onload="init()">
+<header class="app-header navbar">
+    <div class="hamburger hamburger--arrowalt-r navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto">
+        <div class="hamburger-box">
+            <div class="hamburger-inner"></div>
+        </div>
+    </div>
+    <!-- end hamburger -->
+    <a class="navbar-brand" href="../dashboards/dashboard-sales.html">
+        <strong>Digital Bulletin Board</strong>
+    </a>
+
+
+</header>
+<!-- end header -->
+
+<div class="app-body">
+    <div class="sidebar" id="sidebar">
+        <nav class="sidebar-nav" id="sidebar-nav-scroller">
+            <ul class="nav">
+                <li class="nav-item" id="dashboard">
+                    <a class="nav-link" href="#" id="dashboardHref">
+                        <i class="mdi mdi-gauge"></i> Dashboard </a>
+                </li>
+                <li class="nav-item" id="pendingAnnouncements">
+                    <a class="nav-link" href="#" id="pendingAnnouncementHref">
+                        <i class="mdi mdi-gauge"></i> Pending Announcements </a>
+                </li>
+                <li class="nav-item" id="myAnnouncements">
+                    <a class="nav-link" href="#" onclick="window.open('myAnnouncements.html', '_self')">
+                        <i class="mdi mdi-bell"></i> My Announcements </a>
+                </li>
+                <li class="nav-item" id="requestAnnouncements">
+                    <a class="nav-link" href="#" onclick="window.open('requestAnnouncements.html', '_self')">
+                        <i class="mdi mdi-bell"></i> Request for Edit </a>
+                </li>
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="mdi mdi-creation"></i> Create Announcements</a>
+
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="window.open('img-upload.html', '_html')"> Image Upload</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="window.open('video-upload.html', '_html')"> Video Uploads</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="CreatelostfoundHref"> Lost & Founds</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="CreatespecialHref"> Special Announcements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="CreatescholarHref"> Scholarship Announcements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="CreatesportsHref"> Sports Announcements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="createRoomHref" onclick="window.open('room.html', '_self')"> Room & Examination Schedule Announcements</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-dropdown" id="manageAnnouncements">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="mdi mdi-atom"></i> Manage Announcements</a>
+
+                    <ul class="nav-dropdown-items">
+
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="window.open('manage-lost.html', '_self')"> Lost & Found Announcements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="window.open('manage-special.html', '_self')"> Special Announcements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="window.open('manage-scholar.html', '_self')"> Scholarship Announcements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="window.open('manage-sports.html', '_self')"> Sports Announcements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="window.open('manage-room.html', '_self')"> Room & Examination Schedule Announcements</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-dropdown" id="manageID">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="mdi mdi-format-indent-decrease"></i> Manage Faculty ID </a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="window.open('faculty-id.html', '_self')"> Register New ID</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="window.open('manage-faculty-id.html', '_self')"> Faculty ID List</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-dropdown" id="manageEmployees">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="mdi mdi-account-box"></i> Manage Faculty </a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" id="approveEmployeeHref"> Faculty List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pendingEmployeeHref"> Faculty Requests</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-dropdown" id="reportsAnalytics">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="mdi mdi-file-document"></i> Reports</a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="window.open('reports.html', '_self')"> Reports </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="window.open('log-trail.html', '_self')"> Log Trail</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="settingsHref"><i class="mdi mdi-settings"></i>Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="logout"><i class="mdi mdi-logout"></i>Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!-- end sidebar -->
+
+    <main class="main">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb bc-colored bg-theme" id="breadcrumb">
+            <li class="breadcrumb-item ">
+                <a href="./blank-page.html">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#">Layouts</a>
+            </li>
+            <li class="breadcrumb-item active">Blank Page</li>
+        </ol>
+
+        <div class="container">
+
+            <div class="animated fadeIn">
+
+                <div class="row">
+                    <div class="col-md-12">
+                            <div class="card card-accent-theme">
+                                <div class="card-body">
+                                    <h4 class="text-theme" style="text-align: center">Announcements</h4>
+                                    <div id="accordion" role="tablist">
+                                        <div class="card border-danger">
+                                            <div class="card-header" role="tab" id="headingOne">
+                                                <h6 class="mb-0">
+                                                    <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color: #0016da">
+                                                        <i class="fa fa-ioxhost" style="color: red"></i> Lost & Found Announcements
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                <div class="card-body card-outline-top">
+                                                    <div id="lostFound"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card border-danger">
+                                            <div class="card-header" role="tab" id="headingTwo">
+                                                <h6 class="mb-0">
+                                                    <a data-toggle="collapse" href="#collapseTwo" aria-controls="collapseTwo" style="color: #0016da">
+                                                        <i class="fa fa-bullhorn" style="color: red"></i> Special Announcements
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                <!--<div class="card-body">-->
+                                                <!--</div>-->
+                                                <div class="card-body card-outline-top">
+                                                    <div id="specialAnn"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card border-danger">
+                                            <div class="card-header" role="tab" id="headingFour">
+                                                <h6 class="mb-0">
+                                                    <a data-toggle="collapse" href="#collapseFour" aria-controls="collapseFour" style="color: #0016da">
+                                                        <i class="fa fa-book" style="color: red"></i> Scholarship Announcements
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                <div class="card-body card-outline-top">
+                                                    <div id="scholarshipContent"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card border-danger">
+                                            <div class="card-header" role="tab" id="headingFive">
+                                                <h6 class="mb-0">
+                                                    <a data-toggle="collapse" href="#collapseFive" aria-controls="collapseFive" style="color: #0016da">
+                                                        <i class="fa fa-soccer-ball-o" style="color: red"></i>  Sports Announcements
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                <div class="card-body card-outline-top">
+                                                    <div id="sportsContent"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card border-danger">
+                                            <div class="card-header" role="tab" id="headingSix">
+                                                <h6 class="mb-0">
+                                                    <a data-toggle="collapse" href="#collapseSix" aria-controls="collapseSix" style="color: #0016da">
+                                                        <i class="fa fa-pencil" style="color: red"></i> Room & Examination Schedule Announcements
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div id="examAll"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card border-danger">
+                                            <div class="card-header" role="tab" id="headingSeven">
+                                                <h6 class="mb-0">
+                                                    <a data-toggle="collapse" href="#collapseSeven" aria-controls="collapseSeven" style="color: #0016da">
+                                                        <i class="fa fa-pencil" style="color: red"></i> Video Announcement
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseSeven" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div id="video"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card border-danger">
+                                            <div class="card-header" role="tab" id="headingEight">
+                                                <h6 class="mb-0">
+                                                    <a data-toggle="collapse" href="#collapseEight" aria-controls="collapseSeven" style="color: #0016da">
+                                                        <i class="fa fa-pencil" style="color: red"></i> Image Announcement
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapseEight" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div id="image"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end-card-body -->
+                            </div>
+                            <!-- end card -->
+
+                        <!-- end card -->
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+
+            </div>
+            <!-- end animated fadeIn -->
+        </div>
+        <!-- end container-fluid -->
+
+    </main>
+    <!-- end main -->
+
+    <!-- end aside -->
+
+</div>
+<!-- end app-body -->
+
+
+<!-- Bootstrap and necessary plugins -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- Bootstrap and necessary plugins -->
+<script src="../cordova.js"></script>
+<!-- Bootstrap and necessary plugins -->
+<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="../assets/libs/bootstrap/bootstrap.min.js"></script>
+<script src="../assets/libs/PACE/pace.min.js"></script>
+<script src="../assets/libs/chart.js/dist/Chart.min.js"></script>
+<script src="../assets/libs/nicescroll/jquery.nicescroll.min.js"></script>
+
+<!-- jquery-loading -->
+<script src="../assets/libs/jquery-loading/dist/jquery.loading.min.js"></script>
+<script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+<!-- octadmin Main Script -->
+<script src="../assets/js/app.js"></script>
+<script src="../js/home.js"></script>
+<script src="../js/notif.js"></script>
+</body>
+
+</html>
